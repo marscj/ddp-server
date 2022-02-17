@@ -18,8 +18,8 @@ database:
     ctxKeys: ["RequestId"]
 
   default:
-    link:   "mysql:root:Aa112211?@tcp(localhost:3306)/gfast-v2-os"
-    # link:   "mysql:root:Aa112211?@tcp(127.0.0.1:3306)/focus"
+    # link:   "mysql:root:Aa112211?@tcp(localhost:3306)/gfast-v2-os"
+    link:   "mysql:root:Aa112211?@tcp(127.0.0.1:3306)/focus"
     # link:   "pgsql:user=postgres password=Aa112211? host=localhost port=5432 dbname=focus"
     debug:  true
 
@@ -28,7 +28,17 @@ redis:
   default:
     address: 127.0.0.1:6379
     db:      1
-    
+
+gToken:
+  CacheMode : 2
+  CacheKey : "GToken:"
+  Timeout : 0 #3个小时
+  MaxRefresh : 0
+  TokenDelimiter: "_"
+  EncryptKey : "koi29a83idakguqjq29asd9asd8a7jhq"
+  AuthFailMsg : "登录超时，请重新登录"
+  MultiLogin : true  #后台是否允许多端同时在线
+
 # 内容设置
 setting:
   title:       "中国中心-迪拜企业公众平台"
@@ -58,8 +68,8 @@ gfcli:
   # dao生成
   gen:
     dao:
-    - link:          "mysql:root:Aa112211?@tcp(localhost:3306)/gfast-v2-os"
-    # - link:            "mysql:root:Aa112211?@tcp(127.0.0.1:3306)/focus"
+    # - link:          "mysql:root:Aa112211?@tcp(localhost:3306)/gfast-v2-os"
+    - link:            "mysql:root:Aa112211?@tcp(127.0.0.1:3306)/focus"
     # - link: "pgsql:user=postgres password=Aa112211? host=localhost port=5432 dbname=focus"
       removePrefix:    "gf_"
       descriptionTag:  true
