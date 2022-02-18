@@ -1,12 +1,18 @@
 package main
 
 import (
-	_ "ddp-server/internal/packed"
-
-	"github.com/gogf/gf/v2/os/gctx"
-	"ddp-server/internal/cmd"
+	_ "gfast/boot"
+	_ "gfast/router"
+	"github.com/gogf/gf/frame/g"
+	"github.com/gogf/swagger"
 )
 
+// @title       GFast
+// @version     2.0
+// @description GFast后台管理框架
+// @schemes     http https
 func main() {
-	cmd.Main.Run(gctx.New())
+	s := g.Server()
+	s.Plugin(&swagger.Swagger{})
+	s.Run()
 }
